@@ -1,0 +1,4 @@
+selenium=4.1.3  
+pandas==1.3.5
+streamlit==1.3.1
+chromium-chromedriver==99.0.4844.84
