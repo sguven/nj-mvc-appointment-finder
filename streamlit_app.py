@@ -4,7 +4,7 @@ from selenium import webdriver
 import pandas as pd
 from datetime import date
 from selenium.webdriver.common.by import By
-
+import streamlit as st
 
 def app_check():
   chrome_options = webdriver.ChromeOptions()
