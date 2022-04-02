@@ -23,7 +23,7 @@ def exam_counter():
         tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
     return str(min(tarihler))
  
- def six_points_counter():
+def six_points_counter():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
@@ -40,7 +40,7 @@ def exam_counter():
     return str(min(tarihler))
 
 if st.button('DMV Initial Permit Nearest Appointment'):
-    st.text(exam_counter())
+    st.text(six_points_counter())
     
 if st.button('DMV Exam Nearest Appointment'):
     st.text(exam_counter())
