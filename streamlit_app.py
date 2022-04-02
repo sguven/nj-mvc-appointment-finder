@@ -5,13 +5,13 @@ import pandas as pd
 from datetime import date
 from selenium.webdriver.common.by import By
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
 
 def app_check():
+  chrome_options = webdriver.ChromeOptions()
+  chrome_options.add_argument('--headless')
+  chrome_options.add_argument('--no-sandbox')
+  chrome_options.add_argument('--disable-dev-shm-usage')
+  wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
   wd.get('https://telegov.njportal.com/njmvc/AppointmentWizard/19')
   tarihler = []
   listeler = [i.text for i in wd.find_elements(By.XPATH,"//*[contains(@id, 'dateText')]")]
