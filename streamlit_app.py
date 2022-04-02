@@ -54,7 +54,4 @@ if st.button('DMV Exam Nearest Appointment'):
     total_list.append(exam_counter())
 
  
-
-st.text('please ignore the list below')
-st.text(total_list)
   
