@@ -24,9 +24,5 @@ def day_counter():
     return str(min(tarihler))
   
 
-
-
-st.text(argument)
-
 if st.button('DMV Exam Nearest Appointment'):
     st.text(day_counter())
