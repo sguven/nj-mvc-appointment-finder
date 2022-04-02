@@ -23,9 +23,6 @@ def app_check():
   gun_var = str(min(tarihler))
   print(gun_var)
 
-
-calculate = st.button('Calculate the Price')
-
-if calculate:
+if st.button('Calculate the Price'):
   app_check()
   
