@@ -49,7 +49,7 @@ def six_points_counter():
 
 if st.button('DMV Initial Permit Nearest Appointment'):
     st.text(six_points_counter() + ' DAYS TO NEAREST APPOINTMENT')
-    link = '[GO TO PAGE](wd.find_elements(By.XPATH,"//*[contains(@id, 'makebtn')]")[0])'
+    link = wd.find_elements(By.XPATH,"//*[contains(@id, 'makebtn')]")[0])
     st.markdown(link, unsafe_allow_html=True)
 
 
