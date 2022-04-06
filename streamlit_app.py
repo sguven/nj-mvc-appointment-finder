@@ -2,17 +2,17 @@ import streamlit as st
 
 class appointment_check(self):
     def __init__(self):
-        import sys as self.sys
-        from selenium import webdriver as self.webdriver
-        import pandas as self.pd
+        import sys
+        from selenium import webdriver as webdriver
+        import pandas as pd
         from datetime import self.date
-        from selenium.webdriver.common.by import self.By
+        from selenium.webdriver.common.by import By
 
-        self.chrome_options = self.webdriver.ChromeOptions()
-        self.chrome_options.add_argument('--headless')
-        self.chrome_options.add_argument('--no-sandbox')
-        self.chrome_options.add_argument('--disable-dev-shm-usage')
-        self.wd = self.webdriver.Chrome('chromedriver',chrome_options=self.chrome_options)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        self.wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
     def counter(self, website):
         self.wd.get(website)
         tarihler = []
@@ -21,7 +21,7 @@ class appointment_check(self):
           if i == 'No Appointments Available':
             pass
           else:
-            tarihler.append((self.pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - self.pd.to_datetime(self.date.today(), format='%Y/%m/%d')).days)
+            tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(self.date.today(), format='%Y/%m/%d')).days)
         return str(min(tarihler))
 
 
