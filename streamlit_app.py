@@ -5,7 +5,7 @@ class appointment_check(self):
         import sys
         from selenium import webdriver as webdriver
         import pandas as pd
-        from datetime import self.date
+        from datetime import date
         from selenium.webdriver.common.by import By
 
         chrome_options = webdriver.ChromeOptions()
