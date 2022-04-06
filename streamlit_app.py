@@ -1,6 +1,6 @@
 import streamlit as st
 
-class appointment_check(self):
+class appointment_check:
     def __init__(self):
         import sys
         from selenium import webdriver as webdriver
