@@ -21,7 +21,7 @@ def exam_counter():
         pass
       else:
         tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
-    return str(min(tarihler))
+    return str(min(tarihler) + 'days to nearest appointment in ' + tarihler.count(min(tarihler)))
  
 def six_points_counter():
     chrome_options = webdriver.ChromeOptions()
@@ -39,7 +39,7 @@ def six_points_counter():
         pass
       else:
         tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
-    return str(min(tarihler))
+    return str(min(tarihler) + 'days to nearest appointment in ' + tarihler.count(min(tarihler)))
     #index = tarihler.index(min(tarihler))
     #days = str(min(tarihler))
     #link = butonlar.index(min(tarihler))
@@ -48,7 +48,7 @@ def six_points_counter():
 
 
 if st.button('DMV Initial Permit Nearest Appointment'):
-    st.text(six_points_counter() + ' DAYS TO NEAREST APPOINTMENT')
+    st.text(six_points_counter() + ' DAYS TO NEAREST APPOINTMENT IN ' )
     link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/15)'
     st.markdown(link, unsafe_allow_html=True)
 
