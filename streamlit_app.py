@@ -7,6 +7,8 @@ import streamlit as st
 
 
 
+st.text('TODAY IS ' + pd.to_datetime(date.today(), format='%Y/%m/%d'))
+
 def exam_counter():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
