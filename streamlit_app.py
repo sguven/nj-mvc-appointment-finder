@@ -48,14 +48,14 @@ def six_points_counter():
 
 
 if st.button('DMV Initial Permit Nearest Appointment'):
-    st.text(six_points_counter() + ' DAYS TO NEAREST APPOINTMENT IN ' )
+    st.text(six_points_counter())
     link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/15)'
     st.markdown(link, unsafe_allow_html=True)
 
 
     
 if st.button('DMV Exam Nearest Appointment'):
-    st.text(exam_counter() + ' DAYS TO NEAREST APPOINTMENT')
+    st.text(exam_counter())
     link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/19)'
     st.markdown(link, unsafe_allow_html=True)
 
