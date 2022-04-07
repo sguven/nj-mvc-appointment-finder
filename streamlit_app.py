@@ -7,7 +7,7 @@ import streamlit as st
 
 
 
-st.text('TODAY IS ' + date.today())
+st.text('TODAY IS ' + str(date.today()))
 
 def exam_counter():
     chrome_options = webdriver.ChromeOptions()
