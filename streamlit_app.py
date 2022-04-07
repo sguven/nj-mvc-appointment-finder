@@ -29,7 +29,7 @@ def exam_counter():
         pass
       else:
         tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
-    return str(min(tarihler)) + ' days to nearest appointment in ' + str(tarihler.count(min(tarihler))) + ' location(s)'
+    return str(min(tarihler)) + ' day(s) to nearest appointment in ' + str(tarihler.count(min(tarihler))) + ' location(s)'
  
 def six_points_counter():
     chrome_options = webdriver.ChromeOptions()
@@ -47,7 +47,7 @@ def six_points_counter():
         pass
       else:
         tarihler.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
-    return str(min(tarihler)) + ' days to nearest appointment in ' + str(tarihler.count(min(tarihler))) + ' location(s)'
+    return str(min(tarihler)) + ' day(s) to nearest appointment in ' + str(tarihler.count(min(tarihler))) + ' location(s)'
     #index = tarihler.index(min(tarihler))
     #days = str(min(tarihler))
     #link = butonlar.index(min(tarihler))
