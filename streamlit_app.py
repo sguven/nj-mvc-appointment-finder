@@ -8,6 +8,7 @@ import streamlit as st
 
 
 st.text('TODAY IS ' + str(date.today()))
+st.text('PLEASE PUSH THE BUTTON BELOW THAT YOU ARE LOOKING FOR AN APPOINTMENT FOR')
 
 def exam_counter():
     chrome_options = webdriver.ChromeOptions()
