@@ -68,4 +68,4 @@ if st.button('DMV Exam Nearest Appointment'):
     st.markdown(link, unsafe_allow_html=True)
 
  
- st.image(image)
+st.image(image)
