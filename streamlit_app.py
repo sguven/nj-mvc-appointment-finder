@@ -7,7 +7,7 @@ import streamlit as st
 
 
 
-st.text('TODAY IS ' + pd.to_datetime(date.today(), format='%Y/%m/%d'))
+st.text('TODAY IS ' + date.today())
 
 def exam_counter():
     chrome_options = webdriver.ChromeOptions()
