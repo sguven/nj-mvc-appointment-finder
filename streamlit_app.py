@@ -6,6 +6,11 @@ from selenium.webdriver.common.by import By
 import streamlit as st
 
 
+from PIL import Image
+image = Image.open('dmv.gif')
+
+
+
 
 st.text('TODAY IS ' + str(date.today()))
 st.text('PLEASE PUSH THE BUTTON BELOW THAT YOU ARE LOOKING FOR AN APPOINTMENT FOR')
@@ -63,4 +68,4 @@ if st.button('DMV Exam Nearest Appointment'):
     st.markdown(link, unsafe_allow_html=True)
 
  
-  
+ st.image(image)
