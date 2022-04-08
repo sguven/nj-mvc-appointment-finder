@@ -63,7 +63,7 @@ if st.button('DMV Initial Permit Nearest Appointment'):
     
 if st.button('DMV Exam Nearest Appointment'):
     #st.text(exam_counter())
-    st.markdown("<h1 style='text-align: center; color: red;'>" + exam_counter() + "</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='color: red;'>" + exam_counter() + "</h1>", unsafe_allow_html=True)
     link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/19)'
     st.markdown(link, unsafe_allow_html=True)
 
