@@ -10,7 +10,7 @@ from PIL import Image
 image = Image.open('dmv.gif')
 
 
-st st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>", unsafe_allow_html=True)
 
 st.text('TODAY IS ' + str(date.today()))
 st.text('PLEASE PUSH THE BUTTON BELOW THAT YOU ARE LOOKING FOR AN APPOINTMENT FOR')
