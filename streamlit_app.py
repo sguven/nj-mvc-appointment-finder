@@ -57,9 +57,9 @@ def six_points_counter():
 
 if st.button('DMV Initial Permit Nearest Appointment'):
     st.text(six_points_counter())
+    st.markdown("<h1 style='text-align: center; color: red;'>"six_points_counter()"</h1>", unsafe_allow_html=True)
     link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/15)'
     st.markdown(link, unsafe_allow_html=True)
-
 
     
 if st.button('DMV Exam Nearest Appointment'):
