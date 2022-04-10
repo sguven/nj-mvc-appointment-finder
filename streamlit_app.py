@@ -27,7 +27,8 @@ def counter(webpage):
             day_counts.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
     indices = [i for i, x in enumerate(day_counts) if x == min(day_counts)]
     new_locations = [locations[i] for i in indices]
-    return str(min(day_counts)) + ' day(s) to nearest appointment in ' + str(new_locations)
+    new_locations = ', '.join([str(x) for x in new_locations])
+    return str(min(day_counts)) + ' day(s) to nearest appointment in ' + new_locations
 
 
 if st.button('DMV Initial Permit Nearest Appointment'):
