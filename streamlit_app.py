@@ -1,48 +1,25 @@
-import sys
-from selenium import webdriver
-import pandas as pd
+"""Streamlit app: how many days until the soonest NJ MVC appointment, and where."""
 from datetime import date
-from selenium.webdriver.common.by import By
+from pathlib import Path
+
 import streamlit as st
-from PIL import Image
-image = Image.open('dmv.gif')
-st.text('TODAY IS ' + str(date.today()))
-st.text('PLEASE PUSH THE BUTTON BELOW THAT YOU ARE LOOKING FOR AN APPOINTMENT FOR')
 
+from nj_mvc import APPOINTMENT_TYPES, nearest_appointments, wizard_url
 
-def counter(webpage):
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    wd = webdriver.Chrome('chromedriver',chrome_options=chrome_options)
-    wd.get(webpage)
-    locations = [i.text.split('\n')[0] for i in wd.find_elements(By.XPATH,"//*[contains(@style,'font-weight:bold;')]")]
-    day_counts = []
-    web_page_dates = [i.text for i in wd.find_elements(By.XPATH,"//*[contains(@id, 'dateText')]")]
-    for i in web_page_dates:
-        if i == 'No Appointments Available':
-            day_counts.append(1000)
-        else:
-            day_counts.append((pd.to_datetime(i.split(' ')[4], format='%m/%d/%Y') - pd.to_datetime(date.today(), format='%Y/%m/%d')).days)
-    indices = [i for i, x in enumerate(day_counts) if x == min(day_counts)]
-    new_locations = [locations[i] for i in indices]
-    new_locations = ', '.join([str(x) for x in new_locations])
-    return str(min(day_counts)) + ' day(s) to nearest appointment in ' + new_locations
+st.title("NJ MVC Appointment Finder")
+st.caption(f"Today is {date.today():%A, %B %d, %Y}. Pick an appointment type to find the soonest open slot.")
 
+for label, type_id in APPOINTMENT_TYPES.items():
+    if st.button(label, use_container_width=True):
+        with st.spinner("Checking every MVC location…"):
+            try:
+                days, places = nearest_appointments(type_id)
+                st.markdown(f"## :red[{days} day(s)] to the nearest appointment")
+                st.write("at " + ", ".join(places))
+            except LookupError:
+                st.warning("No appointments are available right now.")
+            except Exception as exc:  # site layout changes, driver issues
+                st.error(f"Could not read the MVC site: {exc}")
+        st.link_button("Book on the MVC site", wizard_url(type_id))
 
-if st.button('DMV Initial Permit Nearest Appointment'):
-    #st.text(six_points_counter())
-    st.markdown("<h1 style='color: red;'>" + counter('https://telegov.njportal.com/njmvc/AppointmentWizard/15') + "</h1>", unsafe_allow_html=True)
-    link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/15)'
-    st.markdown(link, unsafe_allow_html=True)
-
-    
-if st.button('DMV Exam Nearest Appointment'):
-    #st.text(exam_counter())
-    st.markdown("<h1 style='color: red;'>" + counter('https://telegov.njportal.com/njmvc/AppointmentWizard/19') + "</h1>", unsafe_allow_html=True)
-    link = '[GO TO PAGE](https://telegov.njportal.com/njmvc/AppointmentWizard/19)'
-    st.markdown(link, unsafe_allow_html=True)
-
- 
-st.image(image)
+st.image(str(Path(__file__).parent / "assets" / "dmv.gif"))
